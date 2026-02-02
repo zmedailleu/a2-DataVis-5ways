@@ -11,11 +11,11 @@ I started with the basic HTML file used on the "Embedding Vega-Lite" page on Veg
 
 
 # d3
-Recreating the graph in d3 took some more getting used to than it did with Vega-Lite. I had to do some digging in the documentation to find what I was looking for (though I do appreciate the index tab that lets you ctrl + F to find specific sections), and the fact that most examples of functions were isolated and don't show their locations in code means that implementation of them can be a game of trial and error. Sometimes I'd find a few simple d3 examples online to see the functions I wanted to use in action, so I could use them myself. Defining scales that are then set to parts of the svg took longer to figure out than I think it should've because of how the documentation is set up, but once I got the hang of it they made recreating properties of the scatterplot fairly smooth. One difficulty was adding labels to the graphs, in which d3 doesn't have as simple as Vega-Lite's "title" property for axes. Instead, I had to create text objects and set their positions manually. One other difficulty I had was getting the ticks to look the same as the example. There is a ticks function with a start, stop, and count, but giving it a discrete start and stop messed up the count for me for some reason. If I gave it just a count variable it would work, but I'd need to provide the count necessary to get the x-axis to increment by 10, instead of being able to specify directly that I want it to increment by 10.
+Recreating the graph in D3 took some more getting used to than it did with Vega-Lite. I had to do some digging in the documentation to find what I was looking for (though I do appreciate the index tab that lets you ctrl + F to find specific sections), and the fact that most examples of functions were isolated and don't show their locations in code means that implementation of them can be a game of trial and error. Sometimes I'd find a few simple D3 examples online to see the functions I wanted to use in action, so I could use them myself. Defining scales that are then set to parts of the svg took longer to figure out than I think it should've because of how the documentation is set up, but once I got the hang of it they made recreating properties of the scatterplot fairly smooth. One difficulty was adding labels to the graphs, in which D3 doesn't have as simple as Vega-Lite's "title" property for axes. Instead, I had to create text objects and set their positions manually. One other difficulty I had was getting the ticks to look the same as the example. There is a ticks function with a start, stop, and count, but giving it a discrete start and stop messed up the count for me for some reason. If I gave it just a count variable it would work, but I'd need to provide the count necessary to get the x-axis to increment by 10, instead of being able to specify directly that I want it to increment by 10.
 
 !["d3 visualization"](img/d3.png)
 
-d3 is definitely useful for people familiar with programming, but it doesn't have the same intuitiveness that Vega-Lite does, which makes it have a steeper learning curve that may drive non-programmers away. But a benefit to d3 is that while implementing some features in the visualization was more difficult than in Vega-Lite, the way it's set up allows for a lot more customization. I can see d3 being useful for when a more specialized visualization is required and the team has someone with a web development background that won't take as long to get comfortable with d3.
+D3 is definitely useful for people familiar with programming, but it doesn't have the same intuitiveness that Vega-Lite does, which makes it have a steeper learning curve that may drive non-programmers away. But a benefit to D3 is that while implementing some features in the visualization was more difficult than in Vega-Lite, the way it's set up allows for a lot more customization. I can see D3 being useful for when a more specialized visualization is required and the team has someone with a web development background that won't take as long to get comfortable with D3.
 
 I started with the code in the "D3 in Vanilla HTML" section of the "Getting started" tab on D3's documentation.
 
@@ -27,12 +27,19 @@ Altair was just as intuitive as Vega-Lite was and the process of replicating the
 
 I can see Altair being useful in a similar way with Vega-Lite, where it's accessibility lowers the entry barrier for people looking to create a visualization. I believe that Vega-Lite would still be more appealing to non-programmers with their online editor and JSON syntax, but any team looking to create a quick but effective visualization wouldn't go wrong choosing Altair.
 
-# DataWrapper
+# Flourish
+Flourish is the only tool I chose that doesn't require any coding or creating JSON objects, and is instead heavily GUI focused. While that does limit your options somewhat, there were enough to let me recreate the graph fairly accurately. I like the data tab, which lets you easily select which fields correlate to the X axis, Y axis, colors, size, etc. This plus the amount of options offers some decent customization. Though one drawback to the size variation is that despite setting the bill length field to the size of each point and the size variation from 10 to 350, the size difference between points is barely noticeable. This seems to be because it's scaling with the smallest size being 0 rather than the minimum bill length, so when referenced to 0, a bill length of 40 and 50 will look almost the same. Also, while I was able to create this graph for free, Flourish does have some paid features.
 
+!["Flourish visualization"](img/flourish.png)
+
+Although Vega-Lite and Altair are both intuitive in their syntax, I can still see them being intimidating to someone with no coding experience, and that they'd much prefer a tool with a GUI like Flourish. Although Flourish doesn't have the flexibility that other tools and libraries have, it has enough features that it would work well for a team in which no members have any experience programming.
 
 # R + ggplot2
+Out of all 5 visualization methods, I found this one to be the least intuitive. Though d3 is more complex, the syntax of it is easier to read at a glance and find out what they're doing. It might be partly because I'm not familiar with R, but I found it hard to navigate the documentation of ggplot with everything being short abbreviations, or even single letters, and it made creating the graph tougher as a newcomer to R. The benefits were that I didn't need to make any changes to get the ticks at reasonable intervals or have scales not start at 0. While it does have good customization like Vega-Lite and Altair, the syntax structure would take some getting used to if I were to make a more complex visualization than this one with ggplot2.
 
+!["ggplot2 visualization"](img/ggplot2.png)
 
+This would likely be best for someone that's already familiar with R and could easily transfer their skills into creating visualizations. In that case, it will likely be easier to get a visualization started with ggplot2, as you can create a solid visualization with very little and tweak it from there. I don't feel like it would be a good recommendation to learn for complex visualizations, because ggplot2 would take some getting used to, and if you're going to learn a library, learning the more versatile d3 would likely be the preferable choice.
 
 Assignment 2 - Data Visualization, 5 Ways  
 ===
@@ -45,8 +52,6 @@ I have provided a small dataset about penguins, `penglings.csv`.
 Each row contains a penguin observation and several variables about it, including bill length, flipper length, and more.
 
 Your goal is to use 5 different tools to make the following chart:
-
-![](img/ggplot2.png)
 
 These features should be preserved as much as possible in your replication:
 
@@ -164,7 +169,6 @@ To visualized the cars dataset, I made use of ggplot2's `geom_point()` layer, wi
 
 While it takes time to find the correct documentation, these functions made the effort creating this chart minimal.
 
-![ggplot2](img/ggplot2.png)
 
 # d3...
 
