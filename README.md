@@ -1,7 +1,38 @@
-
-![penguins](https://github.com/cs4804-24c/a2-DataVis-5Ways/assets/412089/accc5680-3c77-4d29-9502-d3ff8cd922af)
-
 # 02-DataVis-5ways
+
+# Vega-Lite
+I already have some familiarity with Vega-Lite because of my work with it in my MQP, so the process of creating the visualization went pretty smoothly. Although I hadn't worked with scatterplots in Vega-Lite before, the documentation for the grammar is thorough yet easy to understand, so I was able to find the properties I needed to add to recreate the graph without too much trouble. After adding the reference to the CSV file in my Vega-Lite code, all I needed to change was the properties inside the "mark" property to get the visualization looking the same. The main problem I had was that when I changed the bill length legend to look like the example, the labels for "40" and "50" overlapped the symbols. I wasn't able to find a fix for this, since properties that sounded like they would fix it like "labelPadding" didn't seem to have any effect, so I instead removed the legend entirely.
+
+!["Vega-Lite visualization"](img/vega-lite.png)
+
+I can definitely see Vega-Lite being used to create visualizations in many fields, as long as they don't need too much customization, since the ease of use makes up for its limits.
+
+I started with the basic HTML file used on the "Embedding Vega-Lite" page on Vega's website.
+
+
+# d3
+Recreating the graph in d3 took some more getting used to than it did with Vega-Lite. I had to do some digging in the documentation to find what I was looking for (though I do appreciate the index tab that lets you ctrl + F to find specific sections), and the fact that most examples of functions were isolated and don't show their locations in code means that implementation of them can be a game of trial and error. Sometimes I'd find a few simple d3 examples online to see the functions I wanted to use in action, so I could use them myself. Defining scales that are then set to parts of the svg took longer to figure out than I think it should've because of how the documentation is set up, but once I got the hang of it they made recreating properties of the scatterplot fairly smooth. One difficulty was adding labels to the graphs, in which d3 doesn't have as simple as Vega-Lite's "title" property for axes. Instead, I had to create text objects and set their positions manually. One other difficulty I had was getting the ticks to look the same as the example. There is a ticks function with a start, stop, and count, but giving it a discrete start and stop messed up the count for me for some reason. If I gave it just a count variable it would work, but I'd need to provide the count necessary to get the x-axis to increment by 10, instead of being able to specify directly that I want it to increment by 10.
+
+!["d3 visualization"](img/d3.png)
+
+d3 is definitely useful for people familiar with programming, but it doesn't have the same intuitiveness that Vega-Lite does, which makes it have a steeper learning curve that may drive non-programmers away. But a benefit to d3 is that while implementing some features in the visualization was more difficult than in Vega-Lite, the way it's set up allows for a lot more customization. I can see d3 being useful for when a more specialized visualization is required and the team has someone with a web development background that won't take as long to get comfortable with d3.
+
+I started with the code in the "D3 in Vanilla HTML" section of the "Getting started" tab on D3's documentation.
+
+# Altair
+
+Altair was just as intuitive as Vega-Lite was and the process of replicating the visualization went very smoothly. Using its syntax you can create the graph with concise code. With Altair, I could encode the X axis, Y axis, color, and size to their respective fields, and then add properties to them to customize them how I wanted. The legends for size and color were generated without any code, but could also be customized if need be. The only obstacle I faced was some issues with pip install when installing Altair, compared to Vega-Lite where I faced no problems when embedding it in an HTML site.
+
+!["Altair visualization"](img/altair.png)
+
+I can see Altair being useful in a similar way with Vega-Lite, where it's accessibility lowers the entry barrier for people looking to create a visualization. I believe that Vega-Lite would still be more appealing to non-programmers with their online editor and JSON syntax, but any team looking to create a quick but effective visualization wouldn't go wrong choosing Altair.
+
+# DataWrapper
+
+
+# R + ggplot2
+
+
 
 Assignment 2 - Data Visualization, 5 Ways  
 ===
@@ -53,17 +84,17 @@ Some may be difficult choices, like Matlab or SPSS, which require large installa
 
 I have marked a few that are strongly suggested.
 
-- R + ggplot2 `<- definitely worth trying`
+- *R + ggplot2* `<- definitely worth trying`
 - Excel
-- d3 `<- since the rest of the class uses this, we're requiring it`
-- Altair `<- hugely popular python library. highly recommended `
+- *d3* `<- since the rest of the class uses this, we're requiring it`
+- *Altair* `<- hugely popular python library. highly recommended `
 - three.js `<- well, it's a 3d library. not really recommended, but could be interesting and fun`
 - p5js `<- good for playing around. not really a chart lib`
 - Tableau
 - PowerBI
-- Vega-lite <- `<- very interesting formal visualization model; might be the future of the field`
+- *Vega-lite* <- `<- very interesting formal visualization model; might be the future of the field`
 - Flourish <- `<- popular in recent years`
-- DataWrapper <- `<- popular in recent years`
+- *DataWrapper* <- `<- popular in recent years`
 - GNUplot `<- the former CS department head uses this all the time :)`
 - SAS/SPSS/Matlab
 
