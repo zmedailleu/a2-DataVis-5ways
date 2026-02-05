@@ -35,7 +35,7 @@ Flourish is the only tool I chose that doesn't require any coding or creating JS
 Although Vega-Lite and Altair are both intuitive in their syntax, I can still see them being intimidating to someone with no coding experience, and that they'd much prefer a tool with a GUI like Flourish. Although Flourish doesn't have the flexibility that other tools and libraries have, it has enough features that it would work well for a team in which no members have any experience programming.
 
 # R + ggplot2
-Out of all 5 visualization methods, I found this one to be the least intuitive. Though d3 is more complex, the syntax of it is easier to read at a glance and find out what they're doing. It might be partly because I'm not familiar with R, but I found it hard to navigate the documentation of ggplot with everything being short abbreviations, or even single letters, and it made creating the graph tougher as a newcomer to R. The benefits were that I didn't need to make any changes to get the ticks at reasonable intervals or have scales not start at 0, and its convenient that RStudio has its own tab for the graph,[d3.html](d3%2Fd3.html) so I don't need to switch between tabs while working. While it does have good customization like Vega-Lite and Altair, the syntax structure would take some getting used to if I were to make a more complex visualization than this one with ggplot2.
+Out of all 5 visualization methods, I found this one to be the least intuitive. Though d3 is more complex, the syntax of it is easier to read at a glance and find out what they're doing. It might be partly because I'm not familiar with R, but I found it hard to navigate the documentation of ggplot with everything being short abbreviations, or even single letters, and it made creating the graph tougher as a newcomer to R. The benefits were that I didn't need to make any changes to get the ticks at reasonable intervals or have scales not start at 0, and its convenient that RStudio has its own tab for the graph, so I don't need to switch between tabs while working. While it does have good customization like Vega-Lite and Altair, the syntax structure would take some getting used to if I were to make a more complex visualization than this one with ggplot2.
 
 !["ggplot2 visualization"](img/ggplot2.png)
 
@@ -43,17 +43,12 @@ This would likely be best for someone that's already familiar with R and could e
 
 ## Technical Achievements
 - **Showing Data for Point Upon Hover in D3**: I made another version of the D3 visualization that adds some more interactivity to the graph. With this one, upon hovering over a specific data point, it will show you that penguin's island, sex, flipper length, and body mass. Now users can see more data that wasn't present in the original visualization, and they can see the exact values of each point on the graph instead of only being able to estimate based on the location of the point.
+- **Brushing Points to Show Averages in D3**: In the second D3 visualization, I also utilized the brush functionality to allow the user to find what the average measurements are for penguins in a certain section of the graph. By clicking and dragging, you'll create a box, and any points in the box will turn black to indicate that they're selected. The values at the bottom of the graph will change based on which points are selected. The averages at the bottom let the user see the averages of the data points selected and compare how the penguins' measurements correlate to each other in the selected section.
+
+!["Second D3 visualization"](img/d3_2.png)
 
 ## Design Achievements
 - **Consistency Across All Graphs**: For each chart, I made sure to recreate the original visualization as closely as I could. Each species is associated with the same color across all charts, the sizes of the points are as identical to the graph as I could get, and the tick mark increments and positions are the exact same across all charts. When replicating each chart, I did everything I could to prove the capabilities of each library or tool.
 - **Separate Plots with Line of Best Fit in Altair**: I made another version of the Altair chart that splits it into three separate graphs based on the species and also draws a line of best fit through each one. This offers another way of looking at the data: while the original graph makes it easy to compare the sizes of the species of penguins with each other, this way of visualizing it lets you look at each species separately and see the correlation between the flipper length and body mass based on a penguin's species. The X and Y axis are the same for each, so you can still compare sizes between species based on the general location of each specie's data points.
-!["Second altair visualization"](img/altair2.png)
-
-
-
-## Technical Achievements
-- **Proved P=NP**: Using a combination of...
-- **Solved AI Forever**: ...
-
-### Design Achievements
-- **Re-vamped Apple's Design Philosophy**: As demonstrated in my colorscheme...
+- 
+!["Second Altair visualization"](img/altair2.png)
