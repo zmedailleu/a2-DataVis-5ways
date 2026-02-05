@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>D3</title>
+    <link rel="stylesheet" href="d3.css">
 </head>
 <body>
 <div id="container"></div>
@@ -41,6 +42,11 @@
             .attr("width", width + 500)
             .attr("height", height + 500);
 
+        var div = d3.select("body").append("div")
+            .attr("class", "info")
+            .style("opacity", 0)
+            .style("position", "absolute")
+
         svg.append("text")
             .attr("x", width/2 - 10)
             .attr("y", height + 20)
@@ -71,7 +77,29 @@
             .attr("cy", d => y(d.body_mass_g))
             .attr("r", d => r(d.bill_length_mm))
             .attr("fill", d => colorScale(d.species))
-            .attr("opacity", 0.8);
+            .attr("opacity", 0.8)
+
+            .on('mouseover', function (event, d) {
+                d3.select(this).transition()
+                    .attr('opacity', '1')
+                    .attr("r", d => r(d.bill_length_mm)*2)
+                    .duration('1')
+                div.transition()
+                    .duration(1)
+                    .style('opacity', '1')
+                div.html("<b>Island:</b> " +  d.island + "<br><b>Sex:</b> " + d.sex + "<br><b>Flipper Length:</b>" + d.flipper_length_mm + " mm <br><b>Body Mass:</b> " + d.body_mass_g + " g")
+                    .style("left", (event.pageX + 10) + "px")
+                    .style("top", (event.pageY - 15) + "px")
+            })
+            .on('mouseout', function (event, d) {
+                d3.select(this).transition()
+                    .attr('opacity', '.8')
+                    .attr("r", d => r(d.bill_length_mm))
+                    .duration('1')
+                div.transition()
+                    .duration('1')
+                    .style("opacity", 0)
+            });
 
         // Append the SVG element.
         container.append(svg.node());
