@@ -10,7 +10,7 @@
 <div id="vis"></div>
 
 <script type="text/javascript">
-    var yourVlSpec = {
+    var penglingspec = {
         $schema: 'https://vega.github.io/schema/vega-lite/v6.json',
         data: {
             url: "/penglings.csv"
@@ -25,7 +25,7 @@
             size: {field: 'bill_length_mm', legend: null}
         }
     };
-    vegaEmbed('#vis', yourVlSpec);
+    vegaEmbed('#vis', penglingspec);
 </script>
 </body>
 </html>
